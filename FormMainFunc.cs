@@ -21,6 +21,7 @@ namespace Coursework_2kurs
         private void button_generate_Click(object sender, EventArgs e)
         {
             chart.Series[0].Points.Clear();
+            chart1.Series[0].Points.Clear();
 
             int array_size = Convert.ToInt32(numericUpDown.Value);
             Array.Resize(ref array, array_size);
@@ -50,10 +51,10 @@ namespace Coursework_2kurs
                         array[i] = temp;
                     }
                     // Отслежка сортировки в прямом эфире.
-                    chart.Series[0].Points.Clear();
+                    chart1.Series[0].Points.Clear();
                     for (int x = 0; x < array.Length; x++)
                     {
-                        chart.Series[0].Points.Add(array[x]);
+                        chart1.Series[0].Points.Add(array[x]);
                     }
                 }
             }

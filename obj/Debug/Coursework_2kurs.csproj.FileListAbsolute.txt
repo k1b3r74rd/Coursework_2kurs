@@ -11,3 +11,12 @@ G:\0.PROJECTS\C#\TUSUR\Coursework_2kurs\obj\Debug\Coursework_2kurs.pdb
 G:\0.PROJECTS\C#\TUSUR\Coursework_2kurs\obj\Debug\Coursework_2kurs.FormLogin.resources
 G:\0.PROJECTS\C#\TUSUR\Coursework_2kurs\obj\Debug\Coursework_2kurs.FormRegistation.resources
 G:\0.PROJECTS\C#\TUSUR\Coursework_2kurs\obj\Debug\Coursework_2kurs.FormMainFunc.resources
+G:\0.PROJECTS\C#\TUSUR\Coursework_2kurs\bin\Debug\EntityFramework.dll
+G:\0.PROJECTS\C#\TUSUR\Coursework_2kurs\bin\Debug\EntityFramework.SqlServer.dll
+G:\0.PROJECTS\C#\TUSUR\Coursework_2kurs\bin\Debug\System.Data.SQLite.dll
+G:\0.PROJECTS\C#\TUSUR\Coursework_2kurs\bin\Debug\System.Data.SQLite.EF6.dll
+G:\0.PROJECTS\C#\TUSUR\Coursework_2kurs\bin\Debug\System.Data.SQLite.Linq.dll
+G:\0.PROJECTS\C#\TUSUR\Coursework_2kurs\bin\Debug\EntityFramework.xml
+G:\0.PROJECTS\C#\TUSUR\Coursework_2kurs\bin\Debug\EntityFramework.SqlServer.xml
+G:\0.PROJECTS\C#\TUSUR\Coursework_2kurs\bin\Debug\System.Data.SQLite.xml
+G:\0.PROJECTS\C#\TUSUR\Coursework_2kurs\obj\Debug\Coursework_2kurs.csproj.CopyComplete

@@ -30,13 +30,17 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
             this.button_generate = new System.Windows.Forms.Button();
             this.button_sort = new System.Windows.Forms.Button();
             this.numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // chart
@@ -51,7 +55,7 @@
             series1.IsXValueIndexed = true;
             series1.Name = "Series1";
             this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(776, 290);
+            this.chart.Size = new System.Drawing.Size(374, 290);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart";
             // 
@@ -79,7 +83,7 @@
             // button_sort
             // 
             this.button_sort.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_sort.Location = new System.Drawing.Point(473, 322);
+            this.button_sort.Location = new System.Drawing.Point(536, 321);
             this.button_sort.Name = "button_sort";
             this.button_sort.Size = new System.Drawing.Size(160, 40);
             this.button_sort.TabIndex = 4;
@@ -105,11 +109,28 @@
             0,
             0});
             // 
+            // chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            this.chart1.Location = new System.Drawing.Point(414, 12);
+            this.chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            series2.IsValueShownAsLabel = true;
+            series2.IsXValueIndexed = true;
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(374, 290);
+            this.chart1.TabIndex = 6;
+            this.chart1.Text = "chart1";
+            // 
             // FormMainFunc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.numericUpDown);
             this.Controls.Add(this.button_sort);
             this.Controls.Add(this.button_generate);
@@ -119,6 +140,7 @@
             this.Text = "Сортировка расчёской";
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,5 +153,6 @@
         private System.Windows.Forms.Button button_generate;
         private System.Windows.Forms.Button button_sort;
         private System.Windows.Forms.NumericUpDown numericUpDown;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
