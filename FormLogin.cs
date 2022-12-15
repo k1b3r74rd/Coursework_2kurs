@@ -16,20 +16,9 @@ namespace Coursework_2kurs
 {
     public partial class FormLogin : Form
     {
-        public static SQLiteConnection DB = new SQLiteConnection("Data Source=G:\\0.PROJECTS\\C#\\TUSUR\\Coursework_2kurs\\Database_users.db; Version=3");
-
         public FormLogin()
         {
             InitializeComponent();
-        }
-        public void FormLogin_Load(object sender, EventArgs e)
-        {
-            DB.Open();
-        }
-
-        public void FormLogin_Close(object sender, FormClosingEventArgs e)
-        {
-            DB.Close();
         }
 
         public class User
@@ -44,41 +33,57 @@ namespace Coursework_2kurs
             }
             public bool CheckUser() 
             {
+                string database = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Database_users.db";
+                SQLiteConnection DB = new SQLiteConnection(@"Data Source=" + database + "; Version=3;");
+                DB.Open();
                 SQLiteCommand CMD = DB.CreateCommand();
                 if ((Login != null) & (Password != null))
                 {
                     CMD.CommandText = "SELECT Login from Users where Login=@Login";
                     CMD.Parameters.Add("@Login", DbType.String).Value = Login;
-                    SQLiteDataReader SQL = CMD.ExecuteReader();
-                    bool HasRows = SQL.HasRows;
-                    SQL.Close();
+                    SQLiteDataReader SQL_Login = CMD.ExecuteReader();
 
-                    if (HasRows)
+                    bool FoundLogin = false;
+                    while (SQL_Login.Read())
+                    {
+                        FoundLogin = SQL_Login.HasRows;
+                    }
+                    SQL_Login.Close();
+
+                    if (FoundLogin)
                     {
                         CMD.CommandText = "SELECT Login, Password from Users where Login=@Login";
                         CMD.Parameters.Add("@Login", DbType.String).Value = Login;
-                        SQLiteDataReader SQL2 = CMD.ExecuteReader();
-                        if (Convert.ToString(SQL2["Password"]) == Password)
+                        SQLiteDataReader SQL_Password = CMD.ExecuteReader();
+                        string Founded_Password = "";
+                        while (SQL_Password.Read()) 
                         {
-                            SQL2.Close();
+                            Founded_Password = Convert.ToString(SQL_Password["Password"]);
+                        }
+                        SQL_Password.Close();
+                        if (Founded_Password == Password)
+                        {
+                            DB.Close();
                             return true;
                         }
                         else
                         {
                             MessageBox.Show("Неправильно введен пароль.");
-                            SQL2.Close();
+                            DB.Close();
                             return false;
                         }
                     }
                     else
                     {
                         MessageBox.Show("Неправильно написан логин или пароль.");
+                        DB.Close();
                         return false;
                     }
                 } 
                 else
                 {
                     MessageBox.Show("Заполните все поля");
+                    DB.Close();
                     return false;
                 }
             }

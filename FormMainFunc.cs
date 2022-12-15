@@ -37,6 +37,7 @@ namespace Coursework_2kurs
 
         private void button_sort_Click(object sender, EventArgs e)
         {
+            // Сортировка расчёской
             int gap = array.Length - 1;
             while (gap >= 1)
             {
@@ -56,6 +57,23 @@ namespace Coursework_2kurs
                     {
                         chart1.Series[0].Points.Add(array[x]);
                     }
+                }
+            }
+            // Из-за особенности алгоритма, при 2 элементах сортировка не производится
+            // Поэтому дополнительно отдельно выносим "добивочную" часть, сортировку пузырьком
+            for (int i = 0; i + 1 < array.Length; i++)
+            {
+                if (array[i] > array[i + 1])
+                {
+                    int temp = array[i + 1];
+                    array[i + 1] = array[i];
+                    array[i] = temp;
+                }
+                // Отслежка сортировки в прямом эфире.
+                chart1.Series[0].Points.Clear();
+                for (int x = 0; x < array.Length; x++)
+                {
+                    chart1.Series[0].Points.Add(array[x]);
                 }
             }
         }

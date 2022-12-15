@@ -14,19 +14,9 @@ namespace Coursework_2kurs
 {
     public partial class FormRegistation : Form
     {
-        public static SQLiteConnection DB = new SQLiteConnection("Data Source=G:\\0.PROJECTS\\C#\\TUSUR\\Coursework_2kurs\\Database_users.db; Version=3");
-
         public FormRegistation()
         {
             InitializeComponent();
-        }
-        private void FormRegistation_Load(object sender, EventArgs e)
-        {
-            DB.Open();
-        }
-        public void FormRegistation_Close(object sender, FormClosingEventArgs e)
-        {
-            DB.Close();
         }
 
         private void textBox_Password_repeated_TextChanged(object sender, EventArgs e)
@@ -55,13 +45,22 @@ namespace Coursework_2kurs
         {
             if ((textBox_Login.Text != "") & (textBox_Password.Text != "") & (textBox_Password.Text == textBox_Password_repeated.Text))
             {
+                string database = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Database_users.db";
+                SQLiteConnection DB = new SQLiteConnection(@"Data Source=" + database + "; Version=3;");
+                DB.Open();
                 SQLiteCommand CMD = DB.CreateCommand();
                 CMD.CommandText = "SELECT Login from Users where Login=@Login";
                 CMD.Parameters.Add("@Login", DbType.String).Value = textBox_Login.Text;
-                SQLiteDataReader SQL = CMD.ExecuteReader();
-                bool HasRows = SQL.HasRows;
-                SQL.Close();
-                if (!HasRows) 
+                SQLiteDataReader SQL_reader = CMD.ExecuteReader();
+
+                bool FoundLogin = false;
+                while (SQL_reader.Read())
+                {
+                    FoundLogin = SQL_reader.HasRows;
+                }
+                SQL_reader.Close();
+
+                if (!FoundLogin) 
                 {
                     CMD.CommandText = "INSERT into Users(Login, Password) values(@Login, @Password)";
                     CMD.Parameters.Add("@Login", DbType.String).Value = textBox_Login.Text;
@@ -74,6 +73,7 @@ namespace Coursework_2kurs
                 {
                     MessageBox.Show("Данный логин уже занят. Выберите другой.");
                 }
+                DB.Close();
             }
             else
             {

@@ -174,7 +174,6 @@
             this.MinimizeBox = false;
             this.Name = "FormRegistation";
             this.Text = "Регистрация";
-            this.Load += new System.EventHandler(this.FormRegistation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
