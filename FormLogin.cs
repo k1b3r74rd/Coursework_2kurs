@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Data.SqlClient;
-using System.Runtime.Remoting.Contexts;
 
 namespace Coursework_2kurs
 {
@@ -21,10 +12,10 @@ namespace Coursework_2kurs
             InitializeComponent();
         }
 
-        public class User
+        private class User
         {
-            public string Login { get; }
-            public string Password { get; }
+            string Login { get; }
+            string Password { get; }
 
             public User(string login, string password)
             {
@@ -68,21 +59,21 @@ namespace Coursework_2kurs
                         }
                         else
                         {
-                            MessageBox.Show("Неправильно введен пароль.");
+                            MessageBox.Show("Неправильно введен пароль.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             DB.Close();
                             return false;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Неправильно написан логин или пароль.");
+                        MessageBox.Show("Неправильно написан логин или пароль.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         DB.Close();
                         return false;
                     }
                 } 
                 else
                 {
-                    MessageBox.Show("Заполните все поля");
+                    MessageBox.Show("Заполните все поля", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     DB.Close();
                     return false;
                 }

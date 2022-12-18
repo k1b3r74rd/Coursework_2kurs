@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Coursework_2kurs
@@ -38,7 +32,7 @@ namespace Coursework_2kurs
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            textBox_Password_repeated.PasswordChar = checkBox1.Checked ? '\0' : '*';
+            textBox_Password_repeated.PasswordChar = checkBox2.Checked ? '\0' : '*';
         }
 
         private void button_RegisterApprove_Click(object sender, EventArgs e)
@@ -67,17 +61,17 @@ namespace Coursework_2kurs
                     CMD.Parameters.Add("@Password", DbType.String).Value = textBox_Password.Text;
                     CMD.ExecuteNonQuery();
 
-                    MessageBox.Show("Регистрация завершена.");
+                    MessageBox.Show("Регистрация завершена.", "Информация.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Данный логин уже занят. Выберите другой.");
+                    MessageBox.Show("Данный логин уже занят. Выберите другой.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 DB.Close();
             }
             else
             {
-                MessageBox.Show("Заполните все поля корректно.");
+                MessageBox.Show("Заполните все поля корректно.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
